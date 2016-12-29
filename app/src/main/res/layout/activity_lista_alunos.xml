@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_lista_alunos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.caelum.agenda.ListaAlunosActivity">
+
+    <ListView
+        android:id="@+id/lista_alunos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16px"/>
+
+    <Button
+        android:id="@+id/novo_aluno"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="+"
+        android:textSize="36sp"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/oval_red_background"
+        android:elevation="6dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:stateListAnimator="@null"/>
+</RelativeLayout>
