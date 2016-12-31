@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.caelum.agenda">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <receiver android:name=".receiver.SmsReceiver"></receiver>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +25,11 @@
         </activity>
         <activity
             android:name=".FormularioActivity"
-            android:label="Formulário"></activity>
+            android:label="Formulário" />
+        <activity
+            android:name=".DeleteActivity"
+            android:label="@string/title_activity_delete"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

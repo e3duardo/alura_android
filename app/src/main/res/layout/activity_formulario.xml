@@ -15,6 +15,29 @@
         tools:context="br.com.caelum.agenda.FormularioActivity"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="228dp">
+
+            <ImageView
+                android:id="@+id/formulario_foto"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/person"
+                android:background="#00A8EC"
+                />
+
+            <Button
+                android:id="@+id/formulario_botao_foto"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/oval_camera_red_background"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                />
+        </RelativeLayout>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

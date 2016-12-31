@@ -5,20 +5,24 @@ import java.io.Serializable;
 /**
  * Created by eduardo on 29/12/16.
  */
-public class Aluno implements Serializable{
+public class Aluno implements Serializable {
     private Long id;
     private String nome;
     private String endereco;
     private String telefone;
     private String site;
     private Double nota;
+    private String caminhoFoto;
+
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getNome() {
         return nome;
     }
@@ -44,6 +48,11 @@ public class Aluno implements Serializable{
     }
 
     public String getSite() {
+
+        if (!site.startsWith("http")) {
+            site = "http://" + site;
+        }
+
         return site;
     }
 
@@ -57,6 +66,14 @@ public class Aluno implements Serializable{
 
     public void setNota(Double nota) {
         this.nota = nota;
+    }
+
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
     }
 
     @Override
