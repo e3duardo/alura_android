@@ -16,6 +16,7 @@ import java.io.File;
 
 import br.com.caelum.agenda.dao.AlunoDao;
 import br.com.caelum.agenda.model.Aluno;
+import br.com.caelum.agenda.util.Retorno;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -62,14 +63,14 @@ public class FormularioActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
-
                 Aluno aluno = helper.getAluno();
                 AlunoDao dao = new AlunoDao(this);
-                dao.merge(aluno);
+                Retorno<Boolean, String> retorno = dao.merge(aluno);
                 dao.close();
 
-                Toast.makeText(this, "Aluno " + aluno.getNome() + " adicionado!", Toast.LENGTH_SHORT).show();
-                finish();
+                Toast.makeText(this, retorno.getValor(), Toast.LENGTH_SHORT).show();
+                if(retorno.getChave())
+                    finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

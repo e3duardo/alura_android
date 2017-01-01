@@ -35,12 +35,17 @@ public class FormularioHelper {
     }
 
     public Aluno getAluno() {
+        String caminhoFoto = null;
+        if(campoFoto.getTag()!=null)
+            caminhoFoto = campoFoto.getTag().toString();
+
         this.aluno.setNome(campoNome.getText().toString());
         this.aluno.setEndereco(campoEndereco.getText().toString());
         this.aluno.setTelefone(campoTelefone.getText().toString());
         this.aluno.setSite(campoSite.getText().toString());
         this.aluno.setNota(Double.valueOf(campoNota.getProgress()));
-        this.aluno.setCaminhoFoto(campoFoto.getTag().toString());
+        this.aluno.setCaminhoFoto(caminhoFoto);
+
         return this.aluno;
     }
 

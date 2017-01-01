@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.agenda.model.Aluno;
+import br.com.caelum.agenda.util.Retorno;
 
 /**
  * Created by eduardo on 29/12/16.
@@ -31,15 +32,16 @@ public class AlunoDao extends SQLiteOpenHelper {
         String sql ="";
         switch (oldVersion) {
             case 2:
-                sql = "ALTER TABLE Alunos ADD COLUMN caminhoFoto TEXT";
+                sql = "ALTER TABLE alunos ADD COLUMN caminhoFoto TEXT";
                 db.execSQL(sql);
                 break;
-
         }
     }
 
+    public Retorno<Boolean, String> merge(Aluno aluno){
+        if(aluno.getNome().isEmpty())
+            return new Retorno(false,"Preencha o nome");
 
-    public void merge(Aluno aluno){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues dados = new ContentValues();
@@ -51,11 +53,16 @@ public class AlunoDao extends SQLiteOpenHelper {
         dados.put("caminhoFoto", aluno.getCaminhoFoto());
 
         if(aluno.getId() == null) {
-            db.insert("alunos", null, dados);
+            if(db.insert("alunos", null, dados) > 0){
+                return new Retorno(true,"Aluno " + aluno.getNome() + " adicionado!");
+            }
         }else{
             String[] params ={aluno.getId().toString()};
-            db.update("alunos", dados, "id = ?", params);
+            if(db.update("alunos", dados, "id = ?", params)>0){
+                return new Retorno(true,"Aluno " + aluno.getNome() + " alterado!");
+            }
         }
+        return new Retorno(false,"Algo inesperado aconteceu!");
     }
 
     public List<Aluno> getAll() {
